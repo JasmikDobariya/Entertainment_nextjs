@@ -20,7 +20,7 @@ const PageNo = async ({ params }) => {
   return (
     <div className="container  mx-10 m-2  text-white">
       <div className="flex flex-col items-center ">
-        <div className=" font-bold mb-2 text-center">
+        <div className=" font-bold mb-2 text-center" key={data.id}>
           <h1 className="py-2 text-4xl">{data.title}</h1>
           <h2 className="text-3xl">
             Rank : {data.rank} | Year : {data.year}

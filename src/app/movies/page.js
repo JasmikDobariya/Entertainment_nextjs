@@ -28,7 +28,7 @@ const Movies = async () => {
           {data.map((el) => (
             <Link href={`/movies/${el.id}`}>
               <div
-                key={el.rank}
+                key={el.id}
                 className="bg-black p-4 rounded-md shadow-md transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black"
               >
                 <div className="p-1">Rank : {el.rank}</div>

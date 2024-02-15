@@ -1,70 +1,61 @@
-import Image from "next/image";
-import React from "react";
+// "use client"
 
-const AnimepageNo = async ({ params }) => {
-  const id = params.id;
+// import React, { useEffect, useState } from "react";
 
-  const Animeurl = `https://api.jikan.moe/v4/anime?q&sfw/${id}`;
+// const AnimepageNo = ({ params }) => {
+//   const id = params.id;
+//   const [animeData, setAnimeData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
 
-  const Animeresponse = await fetch(Animeurl);
-  const Animeresult = await Animeresponse.json();
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const Animeresponse = await fetch(`https://api.jikan.moe/v4/anime?q=id/${id}`);
+//         const Animeresult = await Animeresponse.json();
 
-  const animeData = Animeresult.data.map((el) => ({
-    id: el.mal_id,
-    title: el.title,
-    imageUrl: el.images.jpg.large_image_url,
-    rating: el.score,
-    rank: el.rank,
-    synopsis: el.synopsis,
-  }));
+//         // Check the actual structure of the API response and adjust the property names accordingly
 
-  console.log("object", animeData.id);
+//         const datas = Animeresult.data;
 
-  return (
-    <div className="container  mx-10 m-2  text-white">
-      <div className="flex flex-col items-center ">
-        <div className=" font-bold mb-2 text-center">
-          <h1 className="py-2 text-4xl">{animeData.title}</h1>
-          <h2 className="text-3xl">
-            Rank : {Animeresult.rank} | Year : {Animeresult.year}
-          </h2>
-        </div>
+//         const data = {
+//           id: datas?.mal_id,
+//           title: datas?.title,
+//           imageUrl: datas?.images?.jpg?.large_image_url,
+//           rating: datas?.score,
+//           rank: datas?.rank,
+//           synopsis: datas?.synopsis,
+//           // Add other properties as needed
+//         };
 
-        <div className="flex m-5">
-          <Image
-            src={animeData.imageUrl}
-            alt="Movie Poster"
-            width={400}
-            height={250}
-          />
+//         setAnimeData(data);
+//         setLoading(false);
+//       } catch (error) {
+//         setError("Error fetching data");
+//         setLoading(false);
+//         console.error("Error fetching data:", error);
+//       }
+//     };
 
-          <div className="flex flex-col gap-4 m-5">
-            <p className="text-xl font-bold ">{animeData.description}</p>
+//     fetchData();
+//   }, [id]);
+  
 
-            <p className="font-semibold text-lg">
-              Categories: {animeData.genre}
-            </p>
-            <p className="font-semibold text-lg">
-              Director: {animeData.director}
-            </p>
-            <p className="font-semibold text-lg">
-              Writers: {animeData.writers}
-            </p>
-            <p className="font-semibold text-lg">IMDb ID: {animeData.imdbid}</p>
-            <iframe
-              width="400"
-              height="250"
-              src={`https://www.youtube.com/embed/${animeData.trailer_youtube_id}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="container mx-10 m-2 text-white">
+//       {loading && <p>Loading...</p>}
+//       {error && <p>{error}</p>}
+//       {animeData && (
+//         <div className="flex flex-col items-center">
+//           <h1 className="py-2 text-4xl">{animeData.title}</h1>
+//           <h2 className="text-3xl">
+//             Rank: {animeData.rank} | Year: {animeData.year}
+//           </h2>
+//           {/* Add the rest of your rendering logic */}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
 
-export default AnimepageNo;
+// export default AnimepageNo;

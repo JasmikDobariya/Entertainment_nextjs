@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Anime = async () => {
-  const Animeurl = "https://api.jikan.moe/v4/anime?q&sfw";
+  const Animeurl = "https://api.jikan.moe/v4/anime";
 
   const Animeresponse = await fetch(Animeurl);
   const Animeresult = await Animeresponse.json();
@@ -29,9 +29,8 @@ const Anime = async () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {animeData.map((el) => (
-            <Link href={`/Anime/${el.id}`}>
               <div
-                key={el.rank}
+                key={el.id}
                 className="bg-black p-4 rounded-md shadow-md transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black"
               >
                 <div className="p-1">Rank : {el.rank}</div>
@@ -41,7 +40,6 @@ const Anime = async () => {
                   <Image src={el.imageUrl} height={200} width={250} style={{width:"250", height:"200"}} alt="movies image" />
                 </div>
               </div>
-            </Link>
           ))}
         </div>
       </div>
