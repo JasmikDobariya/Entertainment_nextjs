@@ -15,18 +15,15 @@ const WebSeriespageNo = async ({ params }) => {
   const response = await fetch(urlweb, optionsweb);
   const result = await response.json();
 
-  
-  console.log("result", result);
-
   return (
     <div className="container mx-10 m-1  text-white">
       <div className="flex flex-col items-center ">
-        <div className="text-4xl font-bold text-center">
+        <div className="text-4xl font-bold text-center" >
           <h1 className="py-2">{result.title}</h1>
           Rank : {result.rank} | Year : {result.year}
         </div>
 
-        <div className="flex m-5">
+        <div className="flex m-5" key={result.id}>
           <Image
             src={result.big_image}
             alt="Movie Poster"

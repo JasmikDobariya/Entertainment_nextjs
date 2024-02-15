@@ -23,9 +23,9 @@ const Web_series = async () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {result.map((el) => (
-            <Link href={`/web_series/${el.id}`}>
+            <Link href={`/web_series/${el.id}`} key={el.id}>
               <div
-                key={el.rank}
+                
                 className="bg-black p-4 rounded-md shadow-md transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black"
               >
                 <div className="p-1">Rank : {el.rank}</div>

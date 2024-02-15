@@ -15,19 +15,18 @@ const PageNo = async ({ params }) => {
 
   const res = await fetch(url, options);
   const data = await res.json();
-  // console.log("data", data);
 
   return (
     <div className="container  mx-10 m-2  text-white">
       <div className="flex flex-col items-center ">
-        <div className=" font-bold mb-2 text-center" key={data.id}>
+        <div className=" font-bold mb-2 text-center" >
           <h1 className="py-2 text-4xl">{data.title}</h1>
           <h2 className="text-3xl">
             Rank : {data.rank} | Year : {data.year}
           </h2>
         </div>
 
-        <div className="flex m-5">
+        <div className="flex m-5" key={data.id}>
           <Image
             src={data.big_image}
             alt="Movie Poster"
